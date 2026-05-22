@@ -1,9 +1,48 @@
 import cosas.*
 
-describe "group of test for cosas" {
+describe "Paquete de ladrillos" {
 
-  test "first test" {
-    assert.that(true)
+  test "si el paquete de ladrillos tiene 100 ladrillos su peso sera de 200 kg" {
+    assert.equals(200, paqueteDeLadrillos.peso())
   }
+  test "la peligrosidad del paquete de ladrillos siempre sera de 2" {
+    assert.equals(2, paqueteDeLadrillos.peligrosidad())
+    
+  }
+}
 
+describe "bateriaAntiaerea" {
+  test "si la bateria esta cargada su peso sera de 300 kg" {
+    assert.equals(300, bateriaAntiaerea.peso())
+  }
+  test "si la bateria esta descargada su peso sera de 200 kg" {
+    bateriaAntiaerea.descargarBateria()
+    assert.equals(200, bateriaAntiaerea.peso())
+  }
+  test "si la bateria esta cargada su peligrosidad sera de 100" {
+    assert.equals(100, bateriaAntiaerea.peligrosidad())
+  }
+  test "si la bateria esta descargada su peligrosidad sera de 0" {
+    bateriaAntiaerea.descargarBateria()
+    assert.equals(0, bateriaAntiaerea.peligrosidad())
+  }
+}
+
+describe "embalaje de seguridad" {
+  test "si contiene 30 kg de residuos radioactivos su peso sera de 30 kg" {
+    embalajeDeSeguridad.tiene(residuosRadioactivos)
+    assert.equals(30, embalajeDeSeguridad.peso())
+  }
+  test "si contiene 30 kg de residuos radioactivos su peligrosidad sera de 100" {
+    assert.equals(100, embalajeDeSeguridad.peligrosidad())
+  }
+}
+
+describe "contenedor portuario" {
+  test "si contiene un knight rider y un paquete de ladrillos con 100 ladrillos entonces su peso sera de 800" {
+    assert.equals(800, contenedorPortuario.peso())
+  }
+  test "si contiene un knight rider y un paquete de ladrillos con 100 ladrillos entonces su peligrosidad sera de 12" {
+    assert.equals(10, contenedorPortuario.peligrosidad())
+  }
 }

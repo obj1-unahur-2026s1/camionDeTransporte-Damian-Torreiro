@@ -1,9 +1,68 @@
+import cosas.*
 import camion.*
 
-describe "group of test for camion" {
+describe "Test del camion cargado con bumblebee como robot, la arena a granel con 150 kilos, la batería antiaérea con los misiles puestos, y el embalaje de seguridad poniéndole como contenido el paquete de ladrillos con 80 ladrillos." {
 
-  test "first test" {
-    assert.that(true)
+  test "lleva peso par" {
+    bumblebee.transformaerEnAuto()
+    arenaAGranel.pesa(150)
+    bateriaAntiaerea.cargarBateria()
+    paqueteDeLadrillos.tiene(80)
+    embalajeDeSeguridad.tiene(paqueteDeLadrillos)
+    camion.cargar(bumblebee)
+    camion.cargar(arenaAGranel)
+    camion.cargar(bateriaAntiaerea)
+    camion.cargar(embalajeDeSeguridad)
+    assert.that(camion.llevaPesosPares())
+  }
+  test "tiene alguna cosa que pese 800 kilos" {
+    bumblebee.transformaerEnAuto()
+    arenaAGranel.pesa(150)
+    bateriaAntiaerea.cargarBateria()
+    paqueteDeLadrillos.tiene(80)
+    embalajeDeSeguridad.tiene(paqueteDeLadrillos)
+    camion.cargar(bumblebee)
+    camion.cargar(arenaAGranel)
+    camion.cargar(bateriaAntiaerea)
+    camion.cargar(embalajeDeSeguridad)
+    assert.that(camion.tieneAlgunaCosaQuePese(800))
+  }
+  test "tiene peligrosidad de 15" {
+    bumblebee.transformaerEnAuto()
+    arenaAGranel.pesa(150)
+    bateriaAntiaerea.cargarBateria()
+    paqueteDeLadrillos.tiene(80)
+    embalajeDeSeguridad.tiene(paqueteDeLadrillos)
+    camion.cargar(bumblebee)
+    camion.cargar(arenaAGranel)
+    camion.cargar(bateriaAntiaerea)
+    camion.cargar(embalajeDeSeguridad)
+    assert.that(camion.tienePeligrosidad(15))
+  }
+  test "debe llevar 2 cosas con peligrosidad mayor a 10" {
+    bumblebee.transformaerEnAuto()
+    arenaAGranel.pesa(150)
+    bateriaAntiaerea.cargarBateria()
+    paqueteDeLadrillos.tiene(80)
+    embalajeDeSeguridad.tiene(paqueteDeLadrillos)
+    camion.cargar(bumblebee)
+    camion.cargar(arenaAGranel)
+    camion.cargar(bateriaAntiaerea)
+    camion.cargar(embalajeDeSeguridad)
+    assert.equals(2, camion.listaDeCosasConPeligrosidadMayorA(10).size())
+    
+  }
+  test "debe ser falso que tenga alguna cosa con peligrosidad mayor a la de los residuos radiactivos" {
+    bumblebee.transformaerEnAuto()
+    arenaAGranel.pesa(150)
+    bateriaAntiaerea.cargarBateria()
+    paqueteDeLadrillos.tiene(80)
+    embalajeDeSeguridad.tiene(paqueteDeLadrillos)
+    camion.cargar(bumblebee)
+    camion.cargar(arenaAGranel)
+    camion.cargar(bateriaAntiaerea)
+    camion.cargar(embalajeDeSeguridad)
+    assert.equals(0,camion.superaLaPeligrosidadDe(residuosRadioactivos).size())
   }
 
 }
